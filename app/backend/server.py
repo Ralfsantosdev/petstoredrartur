@@ -13,10 +13,25 @@ from datetime import datetime, timezone
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
+# Configure logging early
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
+try:
+    mongo_url = os.environ['MONGO_URL']
+except KeyError:
+    logger.error("CRITICAL: MONGO_URL variable is missing!")
+    logger.error("Please add MONGO_URL in Render Dashboard -> Environment.")
+    # For debugging purposes only (do not use in real prod with sensitive data if not necessary, but here keys are safe)
+    logger.error(f"Available Environment Keys: {list(os.environ.keys())}") 
+    raise
+    
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db = client[os.environ.get('DB_NAME', 'petshop_db')]
 
 # Create the main app without a prefix
 app = FastAPI()
