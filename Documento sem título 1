@@ -1,0 +1,22 @@
+<Plan>
+Backend: Criar APIs para produtos, agendamentos e depoimentos
+Frontend: Criar páginas e componentes:
+Landing Page com Hero, Prova Social, Serviços, Autoridade, Localização, CTA
+Página de Agendamento Online
+Catálogo de Produtos
+Header sticky com glassmorphism
+Botão WhatsApp flutuante
+Design: Seguir guidelines (Fraunces + Plus Jakarta Sans, cores Teal/Orange)
+</Plan>
+Created
+/app/backend/server.py
+Jan 29, 09:35 PM
+
+Copy
+Robot
+Created
+/app/frontend/src/index.css
+Jan 29, 09:35 PM
+
+Copy
+

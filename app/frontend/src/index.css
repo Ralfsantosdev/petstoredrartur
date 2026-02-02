@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 30 6% 98%;
+        --foreground: 20 14% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 20 14% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 20 14% 11%;
+        --primary: 174 83% 32%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 27 97% 72%;
+        --secondary-foreground: 21 90% 15%;
+        --muted: 30 6% 96%;
+        --muted-foreground: 24 6% 45%;
+        --accent: 30 6% 96%;
+        --accent-foreground: 20 14% 11%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 24 6% 90%;
+        --input: 24 6% 90%;
+        --ring: 174 83% 32%;
+        --chart-1: 174 83% 32%;
+        --chart-2: 27 97% 72%;
+        --chart-3: 160 60% 45%;
+        --chart-4: 30 80% 55%;
+        --chart-5: 340 75% 55%;
+        --radius: 1rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Fraunces', serif;
+    }
+    .font-accent {
+        font-family: 'Caveat', cursive;
+    }
+}
+
+@layer components {
+    .container-custom {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+    
+    .section-padding {
+        @apply py-16 md:py-24 lg:py-32;
+    }
+    
+    .glass-effect {
+        @apply bg-white/80 backdrop-blur-md border border-white/20;
+    }
+    
+    .card-shadow {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.04);
+    }
+    
+    .float-shadow {
+        box-shadow: 0 8px 30px rgb(0,0,0,0.06);
+    }
+    
+    .btn-shadow {
+        box-shadow: 0 4px 14px 0 rgba(13,148,136,0.39);
+    }
+    
+    .gradient-hero {
+        @apply bg-gradient-to-br from-teal-50 via-stone-50 to-orange-50;
+    }
+    
+    .gradient-text {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-teal-900;
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-stone-100;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-stone-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-stone-400;
+}
+
+/* Selection */
+::selection {
+    @apply bg-teal-200 text-teal-900;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
+
