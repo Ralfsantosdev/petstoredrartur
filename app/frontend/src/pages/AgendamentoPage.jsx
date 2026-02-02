@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
-const API = "/api";
+const API = import.meta.env.VITE_API_URL || "/api";
 
 const AgendamentoPage = () => {
   const [services, setServices] = useState([]);

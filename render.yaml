@@ -1,0 +1,44 @@
+services:
+  # Backend Service (FastAPI)
+  - type: web
+    name: petstore-backend
+    runtime: python
+    buildCommand: |
+      cd app/backend
+      pip install -r requirements.txt
+    startCommand: |
+      cd app/backend
+      uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: MONGO_URL
+        fromDatabase:
+          name: petstore-db
+          property: connectionString
+      - key: DB_NAME
+        value: petshop_db
+      - key: CORS_ORIGINS
+        value: https://petstore-frontend.onrender.com
+
+  # Frontend Service (Vite/React)
+  - type: static
+    name: petstore-frontend
+    runtime: static
+    buildCommand: |
+      cd app/frontend
+      npm install
+      npm run build
+    staticPublishPath: app/frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://petstore-backend.onrender.com/api
+
+databases:
+  # MongoDB Database
+  - name: petstore-db
+    plan: free
+    databaseName: petshop_db
+    user: petshop_user
+
+version: "1"

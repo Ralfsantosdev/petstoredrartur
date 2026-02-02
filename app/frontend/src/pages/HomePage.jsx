@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 // Use environment variable or fallback to localhost
-const API = "/api";
+const API = import.meta.env.VITE_API_URL || "/api";
 
 const HomePage = () => {
   const [testimonials, setTestimonials] = useState([]);

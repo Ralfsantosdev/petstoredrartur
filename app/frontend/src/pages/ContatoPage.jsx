@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import axios from "axios";
 
-const API = "/api";
+const API = import.meta.env.VITE_API_URL || "/api";
 
 const ContatoPage = () => {
   const [formData, setFormData] = useState({

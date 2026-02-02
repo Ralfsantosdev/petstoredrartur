@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const API = "/api";
+const API = import.meta.env.VITE_API_URL || "/api";
 
 const CatalogoPage = () => {
   const [products, setProducts] = useState([]);
